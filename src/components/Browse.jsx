@@ -6,6 +6,7 @@ import SecondaryContainer from './SecondaryContainer'
 import usePopularMovies from '../hooks/usePopularMovies'
 import useTopRatedMovies from '../hooks/useTopRatedMovies'
 import useUpcomingMovies from '../hooks/useUpcomingMovies'
+import Footer from './Footer'
 
 const Browse = () => {
 
@@ -19,6 +20,7 @@ const Browse = () => {
             <Header />
             <MainContainer />
             <SecondaryContainer />
+            <Footer />
         </div>
     )
 }

@@ -1,10 +1,16 @@
 import React, { useRef, useState } from 'react'
 import Header from './Header'
 import { checkValidData } from '../utils/validate'
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
+import {
+    createUserWithEmailAndPassword,
+    signInWithEmailAndPassword,
+    updateProfile
+} from "firebase/auth";
 import { auth } from '../utils/firebase'
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { BG_IMG_URL } from '../utils/constatnts';
+import Footer from './Footer';
 
 
 const Login = () => {
@@ -61,62 +67,55 @@ const Login = () => {
 
     return (
         <div>
-            <Header /> {/* Render the header component */}
+            <Header />
 
-            {/* Background image */}
             <div className='absolute'>
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/74d734ca-0eab-4cd9-871f-bca01823d872/web/IN-en-20241021-TRIFECTA-perspective_2277eb50-9da3-4fdf-adbe-74db0e9ee2cf_large.jpg" alt="" />
+                <img src={BG_IMG_URL} alt="" />
             </div>
 
-            {/* Login/Sign-up form */}
             <form
-                onSubmit={(e) => e.preventDefault()} // Prevent default form submission behavior
+                onSubmit={(e) => e.preventDefault()}
                 className='absolute left-0 right-0 w-3/12 p-12 mx-auto text-white bg-black bg-opacity-85 my-36' action="">
 
-                {/* Form title - changes based on sign-in or sign-up mode */}
                 <h1
                     className='mb-4 text-2xl font-bold text-white'>
                     {isSignInForm ? "Sign In" : "Sign Up"}
                 </h1>
 
-                {/* Full name input - only visible in sign-up mode */}
                 {!isSignInForm && <input
                     ref={name}
                     className='w-full p-2 mb-4 bg-gray-700'
                     type="text"
                     placeholder='full name' />}
 
-                {/* Email input */}
                 <input
                     ref={email}
                     className='w-full p-2 mb-4 bg-gray-700'
                     type="text"
                     placeholder='email address' />
 
-                {/* Password input */}
                 <input
                     ref={password}
                     className='w-full p-2 mb-4 bg-gray-700'
                     type="password"
                     placeholder='password' />
 
-                {/* Error message display */}
                 <p className='mb-4 text-red-500'>{errorMessage}</p>
 
-                {/* Sign-in/Sign-up button */}
                 <button
                     className='w-full py-2 mb-4 bg-red-700 '
                     onClick={handleButtonClick}>
                     {isSignInForm ? "Sign In" : "Sign Up"}
                 </button>
 
-                {/* Toggle link to switch between sign-in and sign-up */}
                 <p
                     className='cursor-pointer'
                     onClick={toggleForm}>
                     {isSignInForm ? "New to Netflix? Sign Up Now." : "Already a User? Sign In Now."}
                 </p>
             </form>
+
+            <Footer />
         </div>
     )
 }
