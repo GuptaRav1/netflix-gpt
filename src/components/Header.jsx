@@ -57,19 +57,32 @@ const Header = () => {
 	};
 
 	return (
-		<div className="absolute z-10 flex justify-between w-full p-6 bg-gradient-to-b from-black">
+		<div className="absolute z-10 flex items-center justify-between w-full p-6 bg-gradient-to-b from-black">
 			<a href="/browse">
 				{isMobile ? (
-					<img className="w-40 h-9" src={MOBILE_LOGO} alt="logo" />
+					<img className="-ml-2 w-11" src={MOBILE_LOGO} alt="logo" />
 				) : (
 					<img className="w-40 h-9" src={LOGO} alt="logo" />
 				)}
 			</a>
+
 			{user && (
 				<div className="flex gap-4">
+					<button
+						onClick={handleSearchGPTClick}
+						className="text-sm font-semibold text-white md:text-base md:bg-purple-700 md:px-4">
+						{showSearchGPT ? "Homepage" : "Search GPT"}
+					</button>
+
+					<button
+						onClick={handleSignOut}
+						className="text-sm font-semibold text-white md:text-base md:px-4 md:bg-green-600">
+						{lang[langKey].signOut}
+					</button>
+
 					<select
 						onChange={handleSetLanguage}
-						className="px-2 font-semibold text-white bg-sky-600 w-28"
+						className="px-2 py-1 text-sm font-semibold text-white bg-red-500 md:text-base"
 						name="language"
 						id="language-selector">
 						{SUPPORTED_LANGUAGES.map((lang) => (
@@ -79,19 +92,9 @@ const Header = () => {
 						))}
 					</select>
 
-					<button
-						onClick={handleSearchGPTClick}
-						className="px-4 font-semibold text-white bg-purple-700">
-						{showSearchGPT ? "Homepage" : "Search GPT"}
-					</button>
-
-					<button
-						onClick={handleSignOut}
-						className="px-4 font-semibold text-white bg-red-500">
-						{lang[langKey].signOut}
-					</button>
-
-					<img className="w-9 h-9" src={PROFILE_PIC} alt="user-icon" />
+					{isMobile ? null : (
+						<img className="w-9 h-9" src={PROFILE_PIC} alt="user-icon" />
+					)}
 				</div>
 			)}
 		</div>
