@@ -1,11 +1,16 @@
 import { signOut } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { LOGO, PROFILE_PIC, SUPPORTED_LANGUAGES } from "../utils/constatnts";
+import {
+	LOGO,
+	PROFILE_PIC,
+	SUPPORTED_LANGUAGES,
+	MOBILE_LOGO,
+} from "../utils/constatnts";
 import { toggleSearchGPTView } from "../utils/gptSlice";
 import { setLanguage } from "../utils/configSlice";
 import lang from "../utils/languageConstatns";
@@ -15,6 +20,7 @@ const Header = () => {
 	const dispatch = useDispatch();
 	const showSearchGPT = useSelector((store) => store.gpt.showSearchGPT);
 	const langKey = useSelector((store) => store.config.language);
+	const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -52,7 +58,13 @@ const Header = () => {
 
 	return (
 		<div className="absolute z-10 flex justify-between w-full p-6 bg-gradient-to-b from-black">
-			<img className="w-40 h-9" src={LOGO} alt="" />
+			<a href="/browse">
+				{isMobile ? (
+					<img className="w-40 h-9" src={MOBILE_LOGO} alt="logo" />
+				) : (
+					<img className="w-40 h-9" src={LOGO} alt="logo" />
+				)}
+			</a>
 			{user && (
 				<div className="flex gap-4">
 					<select

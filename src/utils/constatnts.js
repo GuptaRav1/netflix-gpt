@@ -1,5 +1,8 @@
 export const LOGO =
-	"https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg?w=460";
+	"https://images.ctfassets.net/y2ske730sjqp/821Wg4N9hJD8vs5FBcCGg/9eaf66123397cc61be14e40174123c40/Vector__3_.svg";
+
+export const MOBILE_LOGO =
+	"https://cdn.worldvectorlogo.com/logos/netflix-logo-icon.svg";
 
 export const PROFILE_PIC =
 	"https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/Netflix-avatar.png/120px-Netflix-avatar.png?20201013161117";
