@@ -4,7 +4,7 @@ import { IMG_CDN_URL } from "../utils/constatnts";
 const MovieCard = ({ posterPath }) => {
 	if (!posterPath) return null;
 	return (
-		<div className="w-40">
+		<div className="md:w-40 w-36">
 			<img
 				className="rounded-sm"
 				src={IMG_CDN_URL + posterPath}
