@@ -2,6 +2,10 @@
 
 Welcome to the world of movies, made even more magical with a touch of AI! 🤖 This project is a recreation of the beloved Netflix platform, built with the power of React and Redux. But wait, there's more! 🤯 We've infused it with an incredible GPT-powered search feature for movie recommendations that will blow your mind. 🤯
 
+### 🌐 [Live Demo](https://chat-flix.netlify.app/)
+
+
+
 ![Homepage Screenshot](public/s1.jpeg)
 
 ![GPT Page Screenshot](public/s2.jpeg)
